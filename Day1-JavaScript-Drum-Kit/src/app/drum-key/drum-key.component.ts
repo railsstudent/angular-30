@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, HostListener } from '@angular/core';
 
 @Component({
   selector: 'drum-key',
@@ -44,6 +44,12 @@ export class DrumKeyComponent implements OnInit {
 
   getLetter() {
     return this.letter;
+  }
+
+  @HostListener('transitionend', ['$event'])
+  transitionEnd(ev: any) {
+    console.log(ev);
+    this.isPlaying = false;
   }
 
 }
