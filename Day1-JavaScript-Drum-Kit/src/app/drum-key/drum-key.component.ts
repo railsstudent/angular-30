@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'drum-key',
@@ -18,10 +18,27 @@ export class DrumKeyComponent implements OnInit {
 
   soundFile: string;
 
+  @ViewChild('myaudio')
+  audio: ElementRef;
+
   constructor() { }
 
   ngOnInit() {
     this.soundFile = `assets/sounds/${this.description}.wav`;
+  }
+
+  // https://stackoverflow.com/questions/36695922/angular-2-keyboard-events
+  playSound(){
+    console.log(`${this.letter} is played`);
+    //let audio = (Audio) this.audio;
+    let audio = this.audio.nativeElement;
+    audio.currentTime = 0;
+    audio.play();
+    //key.classList.add('playing');
+  }
+
+  getLetter() {
+    return this.letter;
   }
 
 }
