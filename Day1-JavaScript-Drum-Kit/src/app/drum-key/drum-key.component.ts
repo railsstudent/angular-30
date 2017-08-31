@@ -22,9 +22,6 @@ export class DrumKeyComponent implements OnInit {
 
   ngOnInit() {
     this.soundFile = `assets/sounds/${this.description}.wav`;
-    console.log(this.soundFile);
-    console.log(this.aciiValue);
-
   }
 
 }
