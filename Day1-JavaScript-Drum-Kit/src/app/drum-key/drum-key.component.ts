@@ -3,7 +3,10 @@ import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 @Component({
   selector: 'drum-key',
   templateUrl: './drum-key.component.html',
-  styleUrls: ['./drum-key.component.css']
+  styleUrls: ['./drum-key.component.css'],
+  host: {
+    '[class.playing]': 'isPlaying'
+  }
 })
 export class DrumKeyComponent implements OnInit {
 
@@ -21,20 +24,22 @@ export class DrumKeyComponent implements OnInit {
   @ViewChild('myaudio')
   audio: ElementRef;
 
-  constructor() { }
+  constructor() {
+  }
+
+  isPlaying: boolean;
 
   ngOnInit() {
     this.soundFile = `assets/sounds/${this.description}.wav`;
+    this.isPlaying = false;
   }
 
   // https://stackoverflow.com/questions/36695922/angular-2-keyboard-events
   playSound(){
-    console.log(`${this.letter} is played`);
-    //let audio = (Audio) this.audio;
     let audio = this.audio.nativeElement;
     audio.currentTime = 0;
     audio.play();
-    //key.classList.add('playing');
+    this.isPlaying = true;
   }
 
   getLetter() {
