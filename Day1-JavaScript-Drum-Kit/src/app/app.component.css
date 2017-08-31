@@ -1,0 +1,13 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+
+  font-size: 1em;
+  font-family: sans-serif;
+
+  background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
+  background-size: cover;
+
+  margin: 0;
+  padding: 0;
+}
