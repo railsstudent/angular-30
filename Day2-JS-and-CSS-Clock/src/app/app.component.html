@@ -6,8 +6,8 @@
 </div>
 <div class="clock">
   <div class="clock-face">
-    <div #hourhand class="hand hour-hand"></div>
-    <div #minhand class="hand min-hand"></div>
-    <div #secondhand class="hand second-hand"></div>
+    <div #hourhand class="hand hour-hand" [style.transform]="getHourStyle()"></div>
+    <div #minhand class="hand min-hand" [style.transform]="getMinuteStyle()"></div>
+    <div #secondhand class="hand second-hand" [style.transform]="getSecondStyle()"></div>
   </div>
 </div>
