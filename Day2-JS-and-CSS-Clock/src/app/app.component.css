@@ -1,14 +1,8 @@
 
 :host {
-  background:#018DED url(http://unsplash.it/1500/1000?image=881&blur=50);
-  background-size:cover;
-  font-family:'helvetica neue';
-  text-align: center;
-  width: 100%;
-
   margin: 0;
   display:flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   min-height: 100vh;
   justify-content: center;
   align-items: center;
@@ -16,8 +10,9 @@
 
 .app-title {
   text-align: center;
-  font-size: 0.5rem;
+  font-size: 2rem;
   color: goldenrod;
+  flex: 1 1 100%;
 }
 
 .clock {
@@ -32,7 +27,7 @@
     0 0 0 4px rgba(0,0,0,0.1),
     inset 0 0 0 3px #EFEFEF,
     inset 0 0 10px black,
-    0 0 10px rgba(0,0,0,0.2);
+    0 0 10px rgba(0,0,0,0.2);    
 }
 
 .clock-face {
