@@ -1,0 +1,35 @@
+import { Component, OnInit, HostListener } from '@angular/core';
+
+@Component({
+  selector: 'app-panel',
+  templateUrl: './panel.component.html',
+  styleUrls: ['./panel.component.css'],
+  host: {
+      '[class.open]': 'isOpen',
+      '[class.open-active]': 'isOpenActive'
+  }
+})
+export class PanelComponent implements OnInit {
+
+  isOpen: boolean;
+  isOpenActive: boolean;
+
+  constructor() { }
+
+  ngOnInit() {
+    this.isOpen = false;
+    this.isOpenActive = false;
+  }
+  
+  @HostListener('click', [])
+  click($event) {
+    this.isOpen = !this.isOpen;
+    console.log('click: ', this.isOpen);
+  }
+
+  @HostListener('transitionend', [])
+  transitionEnd($event) {
+    this.isOpenActive = this.isOpen;
+    console.log('transitionend: ', this.isOpenActive);
+  }
+}
