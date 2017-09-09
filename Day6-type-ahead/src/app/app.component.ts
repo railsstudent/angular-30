@@ -8,65 +8,41 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/filter';
 
-import {Suggestion,HighlightedSuggestion} from './suggestion';
+import {Suggestion,HighlightedSuggestion,City} from './model';
+import {TypeAheadService} from './type-ahead.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [TypeAheadService]
 })
 export class AppComponent implements OnInit {
   title = 'Type Ahead';
-  cities = [
-    {
-      city: "New York",
-      growth_from_2000_to_2013: "4.8%",
-      latitude: 40.7127837,
-      longitude: -74.0059413,
-      population: "8405837",
-      rank: "1",
-      state: "New York"
-    },
-    {
-      city: "Los Angeles",
-      growth_from_2000_to_2013: "4.8%",
-      latitude: 34.0522342,
-      longitude: -118.2436849,
-      population: "3884307",
-      rank: "2",
-      state: "California"
-    },
-    {
-      city: "Chicago",
-      growth_from_2000_to_2013: "-6.1%",
-      latitude: 41.8781136,
-      longitude: -87.6297982,
-      population: "2718782",
-      rank: "3",
-      state: "Illinois"
-    }
-  ];
+  cities: City[];
   showHint = true;
   suggestions: Observable<Suggestion[]>;
   private searchTerms = new Subject<string>();
   
-  constructor(titleService: Title) {
+  constructor(titleService: Title, private typeAheadService: TypeAheadService) {
     titleService.setTitle(this.title);
   }
   
   ngOnInit() {
+        this.typeAheadService.getCities().subscribe(cities => this.cities = cities);
         this.suggestions = this.searchTerms
-                            .debounceTime(300)
+                            .debounceTime(500)
                             .distinctUntilChanged()
                             .switchMap(term => { 
                               console.log(term);
                               this.showHint = false;
                               const highlightedPlaces = 
                                 this.findMatches(term)
-                                .map(place => {
-                                  return this.highlightMatchedText(term, place);
-                                });
+                                  .map(place => {
+                                    return this.highlightMatchedText(term, place);
+                                  });
                               return Observable.of<HighlightedSuggestion[]>(highlightedPlaces);
                             });
   }
