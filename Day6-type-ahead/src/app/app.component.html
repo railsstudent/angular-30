@@ -1,8 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <form class="search-form">
-  <input type="text" class="search" placeholder="City or State">
+  <input type="text" class="search" placeholder="City or State" 
+    (change)="displayMatches($event)" (keyup)="displayMatches($event)">
   <ul class="suggestions">
-    <li>Filter for a city</li>
-    <li>or a state</li>
+    <li *ngIf="showHint">Filter for a city</li>
+    <li *ngIf="showHint">or a state</li>
+    <li *ngFor="let suggestion of suggestions | async">
+      <span class='name' [innerHtml]="suggestion.highlight"></span>
+      <span class='position'>{{suggestion.population}}</span>
+    </li>
   </ul>
 </form>
