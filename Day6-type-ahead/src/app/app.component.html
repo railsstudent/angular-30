@@ -7,7 +7,7 @@
     <li *ngIf="showHint">or a state</li>
     <li *ngFor="let suggestion of suggestions | async">
       <span class='name' [innerHtml]="suggestion.highlight"></span>
-      <span class='position'>{{suggestion.population}}</span>
+      <span class='population'>{{suggestion.population}}</span>
     </li>
   </ul>
 </form>
