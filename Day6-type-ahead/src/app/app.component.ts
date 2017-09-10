@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component, OnInit, SecurityContext } from '@angular/core';
+import { Title, DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
@@ -25,8 +25,10 @@ export class AppComponent implements OnInit {
   showHint = true;
   suggestions: Observable<Suggestion[]>;
   private searchTerms = new Subject<string>();
+  searchInput: string;
   
-  constructor(titleService: Title, private typeAheadService: TypeAheadService) {
+  constructor(titleService: Title, private typeAheadService: TypeAheadService,
+    private santizer: DomSanitizer) {
     titleService.setTitle(this.title);
   }
   
@@ -40,9 +42,7 @@ export class AppComponent implements OnInit {
                               this.showHint = false;
                               const highlightedPlaces = 
                                 this.findMatches(term)
-                                  .map(place => {
-                                    return this.highlightMatchedText(term, place);
-                                  });
+                                  .map(place => this.highlightMatchedText(term, place));
                               return Observable.of<HighlightedSuggestion[]>(highlightedPlaces);
                             });
   }
@@ -52,10 +52,11 @@ export class AppComponent implements OnInit {
      const regex = new RegExp(wordToMatch, 'gi');
      const cityName = place.city.replace(regex, `<span class='hl'>${wordToMatch}</span>`);
      const stateName = place.state.replace(regex, `<span class='hl'>${wordToMatch}</span>`);
+     //console.log(cityName);
      hlPlace.city = place.city;
      hlPlace.state = place.state;
      hlPlace.population = this.numberWithCommas(place.population);
-     hlPlace.highlight = `${cityName}, ${stateName}`;
+     hlPlace.highlightCityState = `${cityName}, ${stateName}`;
      return hlPlace;
   }
   
@@ -77,8 +78,8 @@ export class AppComponent implements OnInit {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
   
-  displayMatches($event) {
+  displayMatches() {
     // https://angular.io/tutorial/toh-pt6#!#observables
-    this.searchTerms.next($event.target.value);
+    this.searchTerms.next(this.searchInput);
   }
 }

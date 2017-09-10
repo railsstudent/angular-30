@@ -6,7 +6,7 @@ export class Suggestion {
 }
 
 export class HighlightedSuggestion extends Suggestion {
-  highlight: string;  
+  highlightCityState: string;  
 }
 
 export class City {
