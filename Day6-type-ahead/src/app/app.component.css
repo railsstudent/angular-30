@@ -56,7 +56,7 @@ span.population {
   font-size: 15px;
 }
 
-:host ::ng-deep .hl {
+:host ::ng-deep span.hl {
   background:#ffc600;
 }
 

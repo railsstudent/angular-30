@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
   showHint = true;
   suggestions: Observable<Suggestion[]>;
   private searchTerms = new Subject<string>();
-  searchInput: string;
   
   constructor(titleService: Title, private typeAheadService: TypeAheadService,
     private santizer: DomSanitizer) {
@@ -52,7 +51,6 @@ export class AppComponent implements OnInit {
      const regex = new RegExp(wordToMatch, 'gi');
      const cityName = place.city.replace(regex, `<span class='hl'>${wordToMatch}</span>`);
      const stateName = place.state.replace(regex, `<span class='hl'>${wordToMatch}</span>`);
-     //console.log(cityName);
      hlPlace.city = place.city;
      hlPlace.state = place.state;
      hlPlace.population = this.numberWithCommas(place.population);
@@ -78,8 +76,8 @@ export class AppComponent implements OnInit {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
   
-  displayMatches() {
+  displayMatches(searchInput) {
     // https://angular.io/tutorial/toh-pt6#!#observables
-    this.searchTerms.next(this.searchInput);
+    this.searchTerms.next(searchInput);
   }
 }
