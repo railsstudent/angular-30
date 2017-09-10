@@ -24,12 +24,10 @@ export class PanelComponent implements OnInit {
   @HostListener('click', [])
   click($event) {
     this.isOpen = !this.isOpen;
-    console.log('click: ', this.isOpen);
   }
 
   @HostListener('transitionend', [])
   transitionEnd($event) {
     this.isOpenActive = this.isOpen;
-    console.log('transitionend: ', this.isOpenActive);
   }
 }

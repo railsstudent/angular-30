@@ -1,0 +1,5 @@
+<canvas id="draw" width="800" height="800" #mycanvas
+  (mouseup)="isDrawing=false;" (mouseout)="isDrawing=false;"
+  (mousedown)="onMouseDown([$event.offsetX, $event.offsetY])"
+  (mousemove)="draw([$event.offsetX, $event.offsetY])"
+></canvas>
