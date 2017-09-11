@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemComponent } from '../item/item.component';
+import { CheckboxClickState } from '../checkbox-click-state';
 
 @Component({
   selector: 'app-inbox',
@@ -8,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class InboxComponent implements OnInit {
 
   items = [];
-
+  
   constructor() { }
-
+  
   ngOnInit() {
       this.items = [{
                 description: 'This is an inbox layout.'
@@ -41,5 +43,9 @@ export class InboxComponent implements OnInit {
               }
             ];
   }
-
+  
+  handleClicked(checkboxClickState: CheckboxClickState) {
+    console.log(checkboxClickState);
+  }
+  
 }
