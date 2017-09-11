@@ -1,3 +1,7 @@
-<p>
-  inbox works!
-</p>
+<div class="inbox">
+  <div *ngFor="let item of items">
+    <app-item>
+      <p>{{item.description}}</p>
+    </app-item>
+  </div>
+</div>
