@@ -26,8 +26,10 @@ export class PanelComponent implements OnInit {
     this.isOpen = !this.isOpen;
   }
 
-  @HostListener('transitionend', [])
+  @HostListener('transitionend', ['$event'])
   transitionEnd($event) {
-    this.isOpenActive = this.isOpen;
+    if ($event.propertyName.includes('flex')) {
+      this.isOpenActive = this.isOpen;
+    }
   }
 }
