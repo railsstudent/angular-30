@@ -12,7 +12,7 @@ export class InboxComponent implements OnInit {
   items = [];
   lastChecked: ItemComponent = null;
   
-  @ViewChildren('#appItem')
+  @ViewChildren('appItem')
   appItems: QueryList<ItemComponent>;
   
   constructor() { }

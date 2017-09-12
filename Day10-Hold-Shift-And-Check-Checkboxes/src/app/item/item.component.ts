@@ -11,7 +11,7 @@ export class ItemComponent implements OnInit {
   @Output()
   onClicked = new EventEmitter<CheckboxClickState>();
   
-  @ViewChild('#myCheckbox')
+  @ViewChild('myCheckbox')
   myCheckbox: ElementRef;
 
   constructor() { }
