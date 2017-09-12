@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { ItemComponent } from './item/item.component';
+import { ItemService } from './item/item.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ItemComponent } from './item/item.component';
     BrowserModule
   ],
   providers: [
-    Title
+    Title,
+    ItemService
   ],
   bootstrap: [AppComponent]
 })

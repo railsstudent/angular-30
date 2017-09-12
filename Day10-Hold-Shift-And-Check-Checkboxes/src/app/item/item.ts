@@ -1,4 +1,8 @@
-import { ItemComponent } from './item/item.component';
+import { ItemComponent } from './item.component';
+
+export interface Item {
+  description: string;
+}
 
 export interface CheckboxClickState {
   shiftKey: boolean;

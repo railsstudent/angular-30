@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
-import { CheckboxClickState } from '../checkbox-click-state';
+import { CheckboxClickState } from './item';
 
 @Component({
   selector: 'app-item',
