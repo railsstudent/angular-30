@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'JS and CSS Clock';
+  intervalId: number;
 
   constructor() {
   }
@@ -16,7 +17,11 @@ export class AppComponent implements OnInit {
   hourDegrees: number;
 
   ngOnInit() {
-    setInterval(this.setDate.bind(this), 1000);
+    this.intervalId = setInterval(this.setDate.bind(this), 1000);
+  }
+  
+  ngOnDestroy() {
+    clearInterval(this.intervalId);
   }
 
   setDate() {
