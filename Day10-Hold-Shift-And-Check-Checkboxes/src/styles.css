@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+  font-family: sans-serif;
+  background:#ffc600;
+}
+
+input:checked + p {
+  background:#F9F9F9;
+  text-decoration: line-through;
+}
+
+input[type="checkbox"] {
+  margin:20px;
+}
+
+p {
+  margin:0;
+  padding:20px;
+  transition:background 0.2s;
+  flex:1;
+  font-family:'helvetica neue';
+  font-size: 20px;
+  font-weight: 200;
+  border-left: 1px solid #D1E2FF;
+}

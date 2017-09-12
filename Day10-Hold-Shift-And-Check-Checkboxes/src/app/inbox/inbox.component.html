@@ -1,0 +1,5 @@
+<div class="inbox">
+  <app-item #appItem (onClicked)="handleClicked($event)" *ngFor="let item of items">
+    <p>{{item.description}}</p>
+  </app-item>
+</div>
