@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { ItemComponent } from '../item/item.component';
 import { CheckboxClickState } from '../checkbox-click-state';
 
@@ -10,6 +10,10 @@ import { CheckboxClickState } from '../checkbox-click-state';
 export class InboxComponent implements OnInit {
 
   items = [];
+  lastChecked: ItemComponent = null;
+  
+  @ViewChildren('#appItem')
+  appItems: QueryList<ItemComponent>;
   
   constructor() { }
   
@@ -46,6 +50,22 @@ export class InboxComponent implements OnInit {
   
   handleClicked(checkboxClickState: CheckboxClickState) {
     console.log(checkboxClickState);
+    
+        if (checkboxClickState.shiftKey && checkboxClickState.checked) {
+          // check the items in between
+          // loop over every checkbox element
+          let inBetween = false;
+          this.appItems.forEach(appItem => {
+              if (appItem == checkboxClickState.selected || appItem == this.lastChecked) {
+                inBetween = !inBetween;
+              }
+              if (inBetween) {
+                appItem.selectCheckbox(true);
+              }
+          });
+        }
+
+        this.lastChecked = checkboxClickState.selected;
   }
   
 }

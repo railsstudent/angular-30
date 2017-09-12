@@ -1,5 +1,7 @@
+import { ItemComponent } from './item/item.component';
+
 export interface CheckboxClickState {
-  shiftKeyPressed: boolean;
+  shiftKey: boolean;
   checked: boolean;
-  lastCheck: any;
+  selected: ItemComponent;
 }

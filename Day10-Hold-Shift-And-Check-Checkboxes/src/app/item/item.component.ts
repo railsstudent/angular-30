@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 import { CheckboxClickState } from '../checkbox-click-state';
 
 @Component({
@@ -10,6 +10,9 @@ export class ItemComponent implements OnInit {
 
   @Output()
   onClicked = new EventEmitter<CheckboxClickState>();
+  
+  @ViewChild('#myCheckbox')
+  myCheckbox: ElementRef;
 
   constructor() { }
 
@@ -20,10 +23,14 @@ export class ItemComponent implements OnInit {
     console.log($event);
     console.log(isChecked);
     const checkboxClickState = { 
-        shiftKeyPressed: $event.shiftKey, 
+        shiftKey: $event.shiftKey, 
         checked: isChecked,
-        lastCheck: $event.target
+        selected: this
       };
     this.onClicked.emit(checkboxClickState);
+  }
+  
+  selectCheckbox(value: boolean) {
+    this.myCheckbox.nativeElement.checked = value;
   }
 }
