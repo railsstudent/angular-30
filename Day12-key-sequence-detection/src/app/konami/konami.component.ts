@@ -9,29 +9,25 @@ export class KonamiComponent implements OnInit {
 
   secretCode: string = '';
   pressed: string[] = [];
-  
-  constructor() { 
-    this.secretCode = 'connie';
+
+  constructor() {
   }
 
   ngOnInit() {
+    this.secretCode = 'connie';
   }
 
   @HostListener('window:keyup', ['$event'])
-  onKeyUp($event) {
-    
+  onKeyUp(e) {
+    console.log({key: e.key});
+    this.pressed.push(e.key);
+    // Pushed out from the beginning of array length exceeds length of secret code
+    this.pressed.splice(0,  this.pressed.length - this.secretCode.length);
+    console.log(this.pressed);
+    if (this.pressed.join('').includes(this.secretCode)) {
+      console.log('DING DING');
+      // cornify_add();
+    }
+
   }
-  
-    // const pressed = [];
-    // const secretCode = 'connie';
-    // window.addEventListener('keyup', e => {
-    //   pressed.push(e.key);
-    //   // Pushed out from the beginning of array length exceeds length of secret code
-    //   pressed.splice(0,  pressed.length - secretCode.length);
-    //   console.log(pressed);
-    //   if (pressed.join('').includes(secretCode)) {
-    //     console.log('DING DING');
-    //     cornify_add();
-    //   }
-    // });
 }
