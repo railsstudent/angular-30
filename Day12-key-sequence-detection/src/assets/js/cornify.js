@@ -12,7 +12,7 @@
 }(this, function () {
 	// https://medium.freecodecamp.org/javascript-modules-a-beginner-s-guide-783f7d7a5fcc
 	var cornify_count = 0;
-	cornify_add = function() {
+	var cornify_add = function() {
 		cornify_count += 1;
 		var cornify_url = 'http://www.cornify.com/';
 		var div = document.createElement('div');

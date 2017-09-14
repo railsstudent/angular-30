@@ -30,9 +30,7 @@ export class KonamiComponent implements OnInit {
     console.log(this.pressed);
     if (this.pressed.join('').includes(this.secretCode)) {
       console.log('DING DING');
-      // cornify_add();
       cornami.cornify_add();
     }
-
   }
 }
