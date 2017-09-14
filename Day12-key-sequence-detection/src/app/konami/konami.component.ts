@@ -1,4 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+// https://stackoverflow.com/questions/44817349/how-to-include-external-js-file-in-angular-4-and-call-function-from-angular-to-j
+import * as cornami from '../assets/js/cornify.js';
 
 @Component({
   selector: 'app-konami',

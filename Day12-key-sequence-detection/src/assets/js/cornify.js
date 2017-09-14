@@ -4,7 +4,7 @@ cornify_add = function() {
 	var cornify_url = 'http://www.cornify.com/';
 	var div = document.createElement('div');
 	div.style.position = 'fixed';
-	
+
 	var numType = 'px';
 	var heightRandom = Math.random()*.75;
 	var windowHeight = 768;
@@ -22,11 +22,11 @@ cornify_add = function() {
 		numType = '%';
 		height = Math.round( height*100 )+'%';
 	}
-	
+
 	div.onclick = cornify_add;
 	div.style.zIndex = 10;
 	div.style.outline = 0;
-	
+
 	if( cornify_count==15 ) {
 		div.style.top = Math.max( 0, Math.round( (windowHeight-530)/2 ) )  + 'px';
 		div.style.left = Math.round( (windowWidth-530)/2 ) + 'px';
@@ -36,7 +36,7 @@ cornify_add = function() {
 		else div.style.top = height;
 		div.style.left = Math.round( Math.random()*90 ) + '%';
 	}
-	
+
 	var img = document.createElement('img');
 	var currentTime = new Date();
 	var submitTime = currentTime.getTime();
@@ -64,7 +64,7 @@ cornify_add = function() {
 		var size = .9+Math.round(Math.random()*10)/100;
 		var angle = Math.round(Math.random()*6-3);
 		var result = "rotate("+angle+"deg) scale("+size+","+size+")";
-		this.style.transform = result;	
+		this.style.transform = result;
 		//this.style['-webkit-transform'] = result;
 		//this.style.webkitTransform = result;
 		this.style.WebkitTransform = result;
@@ -72,8 +72,8 @@ cornify_add = function() {
 	}
 	var body = document.getElementsByTagName('body')[0];
 	body.appendChild(div);
-	div.appendChild(img);	
-	
+	div.appendChild(img);
+
 	// Add stylesheet.
 	if (cornify_count == 5) {
 		var cssExisting = document.getElementById('__cornify_css');
@@ -88,10 +88,10 @@ cornify_add = function() {
 			head.appendChild(css);
 		}
 		cornify_replace();
-	}	
+	}
 }
 
-cornify_replace = function() {
+export cornify_replace = function() {
 	// Replace text.
 	var hc = 6, hs, h, k;
 	var words = ['Happy','Sparkly','Glittery','Fun','Magical','Lovely','Cute','Charming','Amazing','Wonderful'];
@@ -108,7 +108,7 @@ cornify_replace = function() {
 /*
  * Adapted from http://www.snaptortoise.com/konami-js/
  */
-var cornami = {
+export var cornami = {
 	input:"",
 	pattern:"38384040373937396665",
 	clear:setTimeout('cornami.clear_input()',5000),
@@ -130,6 +130,7 @@ var cornami = {
 	clear_input: function() {
 		cornami.input="";
 		clearTimeout(cornami.clear);
-	}
+	},
+	cornify_add: cornify_add
 }
 cornami.load();
