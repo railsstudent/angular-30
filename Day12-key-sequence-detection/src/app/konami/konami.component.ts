@@ -1,6 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-// https://stackoverflow.com/questions/44817349/how-to-include-external-js-file-in-angular-4-and-call-function-from-angular-to-j
-import * as cornami from '../assets/js/cornify.js';
+
+// Reference:
+// https://www.thepolyglotdeveloper.com/2017/03/javascript-libraries-in-a-typescript-application-revisited/
+declare var cornami: any;
 
 @Component({
   selector: 'app-konami',
@@ -29,6 +31,7 @@ export class KonamiComponent implements OnInit {
     if (this.pressed.join('').includes(this.secretCode)) {
       console.log('DING DING');
       // cornify_add();
+      cornami.cornify_add();
     }
 
   }
