@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SiteComponent } from './site/site.component';
+import { WindowService } from './shared/window.service';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { SiteComponent } from './site/site.component';
     BrowserModule
   ],
   providers: [
-    Title
+    Title,
+    WindowService
   ],
   bootstrap: [AppComponent]
 })
