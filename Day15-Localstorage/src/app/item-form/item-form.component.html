@@ -8,13 +8,16 @@
  <div class="wrapper">
    <h2>LOCAL TAPAS</h2>
    <p></p>
+   <!--
    <ul class="plates">
      <li>Loading Tapas...</li>
    </ul>
-   <form class="add-items">
-     <input type="text" name="item" placeholder="Item Name" required>
-     <input type="submit" value="+ Add Item">
-     <input type="button" class="clear" value="Clear All">
-     <input type="button" class="check-all" value="Check All">
+ -->
+   <app-item-list></app-item-list>
+   <form class="add-items" (ngSubmit)="onSubmit($event)" #itemForm="ngForm">
+     <input type="text" name="item" placeholder="Item Name" required [(ngModel)]="text">
+     <input type="submit" value="+ Add Item" [disabled]="itemForm.invalid">
+     <input type="button" class="clear" value="Clear All" (click)="clearItem()">
+     <input type="button" class="check-all" value="Check All" (click)="toggleCheckAll()" #btnCheckAll>
    </form>
  </div>

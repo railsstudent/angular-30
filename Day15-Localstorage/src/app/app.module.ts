@@ -1,5 +1,6 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ItemListComponent } from './item-list/item-list.component';
@@ -14,7 +15,8 @@ import { ItemFormComponent } from './item-form/item-form.component';
     ItemFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [
     Title
