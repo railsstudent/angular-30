@@ -7,7 +7,7 @@ import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/cor
 })
 export class ItemFormComponent implements OnInit {
 
-  items = null;
+  items = [];
   text: string = '';
 
   @ViewChild('btnCheckAll')
@@ -17,13 +17,12 @@ export class ItemFormComponent implements OnInit {
 
   ngOnInit() {
     this.items = JSON.parse(localStorage.getItem('items')) || [];
-    console.log({items: this.items});
+    console.log(this.items);
   }
 
   clearItem() {
     this.items.splice(0, this.items.length);
     console.log(this.items);
-    //populateList(items, itemsList);
     localStorage.setItem('items', JSON.stringify(this.items));
   }
 
@@ -37,9 +36,6 @@ export class ItemFormComponent implements OnInit {
       this.renderer.setElementProperty(this.btnCheckAll.nativeElement, 'value', 'Check All');
     }
     localStorage.setItem('items', JSON.stringify(this.items));
-    console.log(this.items);
-    // TODO: update item list child component
-//    populateList(items, itemsList);
   }
 
   populateButtonLabel() {

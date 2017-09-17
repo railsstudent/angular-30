@@ -13,7 +13,7 @@
      <li>Loading Tapas...</li>
    </ul>
  -->
-   <app-item-list></app-item-list>
+   <app-item-list [items]="items"></app-item-list>
    <form class="add-items" (ngSubmit)="onSubmit($event)" #itemForm="ngForm">
      <input type="text" name="item" placeholder="Item Name" required [(ngModel)]="text">
      <input type="submit" value="+ Add Item" [disabled]="itemForm.invalid">
