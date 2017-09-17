@@ -9,7 +9,7 @@ import { Title } from '@angular/platform-browser';
 export class AppComponent {
   title = 'LocalStorage';
 
-  contructor(titleService: Title) {
+  constructor(titleService: Title) {
     titleService.setTitle(this.title);
   }
 }
