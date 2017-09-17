@@ -29,5 +29,4 @@ export class ItemComponent implements OnInit {
     console.log(itemState);
     this.onDone.emit(itemState);
   }
-
 }
