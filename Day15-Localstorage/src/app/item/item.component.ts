@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ItemState } from '../shared/item-state';
+import { Item } from '../shared/item';
 
 @Component({
   selector: 'app-item',
@@ -8,9 +9,8 @@ import { ItemState } from '../shared/item-state';
 })
 export class ItemComponent implements OnInit {
 
-  // TODO: Make an item interface
   @Input()
-  item: any;
+  item: Item;
 
   @Input()
   index: number;
@@ -21,8 +21,6 @@ export class ItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    //console.log(this.item);
-    //console.log(this.index);
   }
 
   toggleDone() {

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ItemState } from '../shared/item-state';
+import { Item } from '../shared/item';
 
 @Component({
   selector: 'app-item-list',
@@ -9,7 +10,7 @@ import { ItemState } from '../shared/item-state';
 export class ItemListComponent implements OnInit {
 
   @Input()
-  items: any;
+  items: Item[];
 
   @Output()
   onDone = new EventEmitter<ItemState>();

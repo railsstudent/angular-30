@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { ItemState } from '../shared/item-state';
+import { Item } from '../shared/item';
 
 @Component({
   selector: 'app-item-form',
@@ -8,7 +9,7 @@ import { ItemState } from '../shared/item-state';
 })
 export class ItemFormComponent implements OnInit {
 
-  items = [];
+  items: Item[] = [];
   text: string = '';
 
   @ViewChild('btnCheckAll')
@@ -50,12 +51,11 @@ export class ItemFormComponent implements OnInit {
 
   onSubmit($event) {
     $event.preventDefault();
-    const item = {
+    const item: Item = {
       text: this.text,
       done: false
     };
     this.items.push(item);
-    console.log(this.items);
     localStorage.setItem('items', JSON.stringify(this.items));
     this.populateButtonLabel();
     this.text = '';
