@@ -4,7 +4,7 @@
   text-align: left;
   list-style: none;
 }
-
+/*
 .plates li {
   border-bottom: 1px solid rgba(0,0,0,0.2);
   padding: 10px 0;
@@ -30,3 +30,4 @@
 .plates input:checked + label:before {
   content: '🌮';
 }
+*/

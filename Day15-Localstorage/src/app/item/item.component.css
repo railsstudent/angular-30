@@ -1,0 +1,25 @@
+li {
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  padding: 10px 0;
+  font-weight: 100;
+  display: flex;
+}
+
+label {
+  flex:1;
+  cursor: pointer;
+
+}
+
+input {
+  display: none;
+}
+
+input + label:before {
+  content: '⬜️';
+  margin-right: 10px;
+}
+
+input:checked + label:before {
+  content: '🌮';
+}
