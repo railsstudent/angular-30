@@ -26,7 +26,6 @@ export class ItemComponent implements OnInit {
   toggleDone() {
     this.item.done = !this.item.done;
     const itemState: ItemState = { done: this.item.done, index: this.index }
-    console.log(itemState);
     this.onDone.emit(itemState);
   }
 }
