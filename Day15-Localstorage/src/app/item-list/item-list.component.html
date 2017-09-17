@@ -1,0 +1,6 @@
+<p>Plates checked: {{numPlatesChecked}}</p>
+<ul class="plates">
+  <li *ngFor="let item of items;trackBy: trackByFunc;index as i">
+    <app-item [item]="item" [index]="i" (onDone)="updateItemCount($event)"></app-item>
+  </li>
+</ul>
