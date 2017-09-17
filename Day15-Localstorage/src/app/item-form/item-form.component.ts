@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
+import { ItemState } from '../shared/item-state';
 
 @Component({
   selector: 'app-item-form',
@@ -24,6 +25,7 @@ export class ItemFormComponent implements OnInit {
     this.items.splice(0, this.items.length);
     console.log(this.items);
     localStorage.setItem('items', JSON.stringify(this.items));
+    this.populateButtonLabel();
   }
 
   toggleCheckAll() {
@@ -54,10 +56,14 @@ export class ItemFormComponent implements OnInit {
     };
     this.items.push(item);
     console.log(this.items);
-    // TODO: notify item list to update later
-    //populateList(items, itemsList);
     localStorage.setItem('items', JSON.stringify(this.items));
+    this.populateButtonLabel();
     this.text = '';
+  }
+
+  updateLocalStorage(itemState: ItemState) {
+    localStorage.setItem('items', JSON.stringify(this.items));
+    this.populateButtonLabel();
   }
 
 }
