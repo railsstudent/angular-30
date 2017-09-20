@@ -1,0 +1,22 @@
+#bands {
+  list-style: inside square;
+  font-size: 20px;
+  background: white;
+  width: 500px;
+  margin: auto;
+  padding: 0;
+  box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.05);
+}
+#bands li {
+  border-bottom: 1px solid #efefef;
+  padding: 20px;
+}
+#bands li:last-child {
+  border-bottom: 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
