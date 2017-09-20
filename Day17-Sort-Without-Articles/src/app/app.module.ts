@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ArticleComponent } from './article/article.component';
+import { ArticleService } from './article/article.service';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { ArticleComponent } from './article/article.component';
     BrowserModule
   ],
   providers: [
-    Title
+    Title,
+    ArticleService
   ],
   bootstrap: [AppComponent]
 })
