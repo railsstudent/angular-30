@@ -7,7 +7,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Speed Recognition';
+  title = 'Speed Detection';
   
   constructor(titleService: Title) {
     titleService.setTitle(this.title);
