@@ -1,0 +1,7 @@
+<div #myword class="words" contenteditable>
+  <p *ngFor="let stat of transcripts" contenteditable="false">
+    {{stat.transcript}}<br />
+     Confidence: ({{stat.confidence}})
+  </p>
+</div>
+  
