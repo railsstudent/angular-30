@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { IWindow } from '../shared/iwindow';
 
 declare var SpeechSynthesisUtterance: any;
@@ -10,28 +10,72 @@ declare var SpeechSynthesisUtterance: any;
 })
 export class SpeechSynthesisComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  msg: any = null;
+  speechSynthesis: any = null;
+
+  initialValues = {
+    text: "Hello! I love JavaScript 👍",
+    rate: '1.0',
+    pitch: "1.0"
+  }
+
+  voiceOptions = [];
+
+  constructor(private zone: NgZone) { }
 
   ngOnInit() {
       console.log(<IWindow>window);
-      const { speechSynthesis }: IWindow = <IWindow>window;
-      //console.log(SpeechSynthesis, SpeechSynthesisUtterance); = 
-      console.log(speechSynthesis);
-      // if (window.speechSynthesis) {
-      //   console.log('hello');
-      // }
-      /*if (window.SpeechSynthesisUtterance) {
-        console.log('world');
-      }*/
+      const iWindow: IWindow = <IWindow>window;
+      this.speechSynthesis = iWindow.speechSynthesis;
       if (SpeechSynthesisUtterance) {
-        const x = new SpeechSynthesisUtterance();
-        console.log(x);
-        console.log('world');
+        this.msg = new SpeechSynthesisUtterance();
+        console.log(this.initialValues.text);
+        this.msg.text = this.initialValues.text;
       }
-  }
-  
-  ngOnDestroy() {
-    
+      if (this.speechSynthesis) {
+        this.speechSynthesis.onvoiceschanged = this.populateVoices();
+      }
+
+      console.log(  this.speechSynthesis);
+      console.log(this.msg);
+
+      this.zone.run(() => {
+        this.populateVoices();
+        console.log('Run in zone');
+      });
   }
 
+  ngOnDestroy() {
+    if (this.speechSynthesis) {
+      this.speechSynthesis.cancel();
+    }
+  }
+
+  toggle(startOver = true) {
+    this.speechSynthesis.cancel();
+    if (startOver) {
+      this.speechSynthesis.speak(this.msg);
+    }
+  }
+
+  setOption(name) {
+    console.log(this.initialValues);
+    this.msg[name] = this.initialValues[name];
+    this.toggle();
+  }
+
+  populateVoices() {
+    if (this.speechSynthesis) {
+      const voices = this.speechSynthesis.getVoices();
+      console.log(voices);
+      this.voiceOptions = voices
+        .filter(voice => voice.lang.includes('en') || voice.lang.includes('CA') || voice.lang.includes('zh'));
+      console.log(this.voiceOptions);
+    }
+  }
+
+  setVoice(target) {
+      this.msg.voice = this.voiceOptions.find(v => v.lang === target.value);
+      this.toggle();
+  }
 }
