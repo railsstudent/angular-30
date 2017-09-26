@@ -1,0 +1,19 @@
+<div class="voiceinator">
+
+  <h1>The Voiceinator 5000</h1>
+
+  <select name="voice" id="voices" (change)="setVoice($event.target)">
+    <option *ngFor="let voice of voiceOptions" value="{{voice.lang}}">{{voice.name}} ({{voice.lang}})</option>
+  </select>
+
+  <label for="rate">Rate:</label>
+  <input name="rate" type="range" min="0" max="3" step="0.1" (change)="setOption('rate')" [(ngModel)]="initialValues.rate">
+
+  <label for="pitch">Pitch:</label>
+
+  <input name="pitch" type="range" min="0" max="2" step="0.1" (change)="setOption('pitch')" [(ngModel)]="initialValues.pitch">
+  <textarea name="text" (change)="setOption('text')" [(ngModel)]="initialValues.text"></textarea >
+  <button id="stop" (click)="toggle(false)" >Stop!</button>
+  <button id="speak" (click)="toggle()" >Speak</button>
+
+</div>
