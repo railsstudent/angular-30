@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -11,5 +11,10 @@ export class AppComponent {
 
   constructor (titleService: Title) {
     titleService.setTitle(this.title);
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll($event) {
+    console.log('scroll happen');
   }
 }
