@@ -38,11 +38,6 @@ export class SpeechSynthesisComponent implements OnInit, OnDestroy {
 
       console.log(  this.speechSynthesis);
       console.log(this.msg);
-
-      this.zone.run(() => {
-        this.populateVoices();
-        console.log('Run in zone');
-      });
   }
 
   ngOnDestroy() {
@@ -65,12 +60,15 @@ export class SpeechSynthesisComponent implements OnInit, OnDestroy {
   }
 
   populateVoices() {
+    console.log('populateVoices fired');
     if (this.speechSynthesis) {
-      const voices = this.speechSynthesis.getVoices();
-      console.log(voices);
-      this.voiceOptions = voices
-        .filter(voice => voice.lang.includes('en') || voice.lang.includes('CA') || voice.lang.includes('zh'));
-      console.log(this.voiceOptions);
+      setTimeout( () => {
+        const voices = this.speechSynthesis.getVoices();
+        console.log(voices);
+        this.voiceOptions = voices
+          .filter(voice => voice.lang.includes('en') || voice.lang.includes('CA'));
+        console.log(this.voiceOptions);
+      }, 500);
     }
   }
 
