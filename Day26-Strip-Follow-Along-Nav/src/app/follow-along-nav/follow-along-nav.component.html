@@ -1,10 +1,10 @@
-<nav class="top">
-  <div class="dropdownBackground">
+<nav class="top" #myNav>
+  <div class="dropdownBackground" #dropdownBackground>
     <span class="arrow"></span>
   </div>
 
   <ul class="cool">
-    <li>
+    <li (mouseenter)="handleEnter($event)" (mouseleave)="handleLeave($event)">
       <a href="#">About Me</a>
       <div class="dropdown dropdown1">
         <div class="bio">
@@ -13,7 +13,7 @@
         </div>
       </div>
     </li>
-    <li>
+    <li (mouseenter)="handleEnter($event)" (mouseleave)="handleLeave($event)">
       <a href="#">Courses</a>
       <ul class="dropdown courses">
         <li>
@@ -46,7 +46,7 @@
         </li>
       </ul>
     </li>
-    <li>
+    <li (mouseenter)="handleEnter($event)" (mouseleave)="handleLeave($event)">
       <a href="#">Other Links</a>
       <ul class="dropdown dropdown3">
         <li><a class="button" href="http://twitter.com/wesbos">Twiter</a></li>
