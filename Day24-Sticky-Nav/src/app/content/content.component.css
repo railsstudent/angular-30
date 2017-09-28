@@ -8,3 +8,8 @@
   transform: scale(0.98);
   transition: transform 0.5s;
 }
+
+
+:host(.fixed-nav .site-wrap) {
+  transform: scale(1);
+}
