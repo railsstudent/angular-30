@@ -32,7 +32,7 @@ nav ul {
   opacity: 0;
   position: absolute;
   overflow: hidden;
-  padding:20px;
+  padding:20px !important;
   top:-20px;
   border-radius:2px;
   transition: all 0.5s;
