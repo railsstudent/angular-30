@@ -1,0 +1,15 @@
+header {
+  text-align: center;
+  height:50vh;
+  background:url(http://wes.io/iEgP/wow-so-deep.jpg) bottom center no-repeat;
+  background-size:cover;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
+h1 {
+  color:white;
+  font-size: 7vw;
+  text-shadow: 3px 4px 0 rgba(0,0,0,0.2)
+}

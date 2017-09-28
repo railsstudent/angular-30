@@ -1,0 +1,15 @@
+.site-wrap {
+  max-width: 700px;
+  margin: 70px auto;
+  background:white;
+  padding:40px;
+  text-align: justify;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.05);
+  transform: scale(0.98);
+  transition: transform 0.5s;
+}
+
+
+:host(.fixed-nav .site-wrap) {
+  transform: scale(1);
+}
