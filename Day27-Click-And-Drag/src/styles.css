@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+  box-sizing: border-box;
+  background: url('https://source.unsplash.com/NFs6dRTBgaM/2000x2000') fixed;
+  background-size: cover;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100vh;
+  font-family: sans-serif;
+  font-size: 20px;
+  margin: 0;
+}
