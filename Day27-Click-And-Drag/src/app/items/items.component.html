@@ -1,3 +1,7 @@
-<div class="items">
+<div class="items" #items
+  (mousedown)="onMouseDown($event)"
+  (mouseup)="onMouseLeave()"
+  (mousemove)="onMouseMove($event)"
+  (mouseleave)="onMouseLeave()">
   <div *ngFor="let n of numbers" class="item item{{n}}">{{n < 10 ? '0' + n : n }}</div>
 </div>
