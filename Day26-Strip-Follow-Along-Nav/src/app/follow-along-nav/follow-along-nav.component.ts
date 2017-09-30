@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, QueryList, ElementRef, Renderer } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { Course, SocialMedia } from '../shared/model';
 
 @Component({
@@ -99,10 +99,6 @@ export class FollowAlongNavComponent implements OnInit {
       top:  dropdownCoords.top - navCoords.top,
       left:  dropdownCoords.left - navCoords.left
     }
-
-    console.log(dropdownCoords.top, dropdownCoords.left);
-    console.log(navCoords.top, navCoords.left);
-    console.log(coords.top, coords.left);
 
     this.renderer.setElementStyle(this.background.nativeElement, 'width', `${coords.width}px`);
     this.renderer.setElementStyle(this.background.nativeElement, 'height', `${coords.height}px`);
