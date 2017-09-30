@@ -78,19 +78,6 @@ nav ul {
   transform: translateY(-50%) rotate(45deg);
 }
 
-.bio {
-  min-width:500px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 1.7;
-}
-
-.bio img {
-  float:left;
-  margin-right:20px;
-}
-
 .courses {
   min-width:300px;
 }
@@ -118,4 +105,4 @@ a.button {
 /* Matches Twitter, TWITTER, twitter, tWitter, TWiTTeR... */
 .button[href*=twitter] { background: #019FE9; }
 .button[href*=facebook] { background: #3B5998; }
-.button[href*=courses] { background: #ffc600; }
+.button[href*=courses] { background: #b642f4; }

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, QueryList, ElementRef, Renderer } from '@angular/core';
+import { Course, SocialMedia } from '../shared/model';
 
 @Component({
   selector: 'app-follow-along-nav',
@@ -13,10 +14,65 @@ export class FollowAlongNavComponent implements OnInit {
   @ViewChild('myNav')
   nav: ElementRef;
 
+  courses: Course[];
+  socialAccounts: SocialMedia[];
+
   constructor(private renderer: Renderer) {
   }
 
   ngOnInit() {
+    this.courses = [{
+      code: 'RFB',
+      link: 'https://ReactForBeginners.com',
+      description: 'React For Beginners'
+    },
+    {
+      code: 'ES6',
+      link: 'https://ES6.io',
+      description: 'ES6 For Everyone'
+    },
+    {
+      code: 'STPU',
+      link: 'https://SublimeTextBook.com',
+      description: 'Sublime Text Power User'
+    },
+    {
+      code: 'WTF',
+      link: 'http://flexbox.io',
+      description: 'What The Flexbox?!'
+    },
+    {
+      code: 'LRX',
+      link: 'http://LearnRedux.com',
+      description: 'Learn Redux'
+    },
+    {
+      code: 'CLPU',
+      link: 'http://CommandLinePowerUser.com',
+      description: 'Command Line Power User'
+    },
+    {
+      code: 'MMD',
+      link: 'http://MasteringMarkdown.com',
+      description: 'Mastering Markdown'
+    }];
+
+    this.socialAccounts = [{
+      link: 'http://twitter.com/wesbos',
+      description:  'Twitter'
+    },
+    {
+      link: 'http://facebook.com/wesbos.developer',
+      description:  'Facebook'
+    },
+    {
+      link: 'http://wesbos.com',
+      description:  'Blog'
+    },
+    {
+      link: 'http://wesbos.com/courses',
+      description:  'Course Catalog'
+    }]
   }
 
   handleEnter($event) {
