@@ -5,13 +5,14 @@
 
   <ul class="cool">
     <li (mouseenter)="handleEnter($event)" (mouseleave)="handleLeave($event)">
-      <app-dropdown-content href='&#35;' linkName='About Me' dropdownClass='dropdown1'>
+      <a href="#">About Me</a>
+      <div class="dropdown dropdown1">
         <div class="bio">
           <img src="https://logo.clearbit.com/wesbos.com">
           <p>Wes Bos sure does love web development. He teaches things like JavaScript, CSS and BBQ. Wait.
             BBQ isn't part of web development. It should be though!</p>
         </div>
-      </app-dropdown-content>
+      </div>
     </li>
     <li (mouseenter)="handleEnter($event)" (mouseleave)="handleLeave($event)">
       <a href="#">Courses</a>

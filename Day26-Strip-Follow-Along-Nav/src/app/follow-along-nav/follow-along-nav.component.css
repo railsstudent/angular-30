@@ -78,6 +78,19 @@ nav ul {
   transform: translateY(-50%) rotate(45deg);
 }
 
+.bio {
+  min-width:500px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.7;
+}
+
+.bio img {
+  float:left;
+  margin-right:20px;
+}
+
 .courses {
   min-width:300px;
 }
