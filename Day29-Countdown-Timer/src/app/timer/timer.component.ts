@@ -54,6 +54,15 @@ export class TimerComponent implements OnInit, OnDestroy {
 
     this.displayTimeLeft(elTimerDisplay, seconds);
     this.displayEndTime(elEndTime, then);
+
+    this.countdown = setInterval(() => {
+      const secondsLeft = Math.round( (then - Date.now()) / 1000 );
+      if (secondsLeft < 0) {
+        clearInterval(this.countdown);
+        return;
+      }
+      this.displayTimeLeft(elTimerDisplay, secondsLeft);
+    }, 1000);
   }
 
   displayTimeLeft(elTimerDisplay, seconds) {
