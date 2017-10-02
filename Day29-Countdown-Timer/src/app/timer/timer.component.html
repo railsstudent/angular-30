@@ -1,0 +1,15 @@
+<div class="timer">
+  <div class="timer__controls">
+    <button *ngFor="let option of timerOptions" class="timer__button"
+      (click)="timer(option.value, timerDisplay, endTime)">
+      {{option.description}}
+    </button>
+    <form name="customForm" id="custom" #form="ngForm" (ngSubmit)="submit($event, form, timerDisplay, endTime)">
+      <input type="number" name="minutes" [(ngModel)]="minutes" placeholder="Enter Minutes">
+    </form>
+  </div>
+  <div class="display">
+    <h1 class="display__time-left" #timerDisplay></h1>
+    <p class="display__end-time" #endTime></p>
+  </div>
+</div>
