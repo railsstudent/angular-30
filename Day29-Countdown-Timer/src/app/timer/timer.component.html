@@ -4,8 +4,8 @@
       (click)="timer(option.value, timerDisplay, endTime)">
       {{option.description}}
     </button>
-    <form name="customForm" id="custom">
-      <input type="text" name="minutes" placeholder="Enter Minutes">
+    <form name="customForm" id="custom" #form="ngForm" (ngSubmit)="submit($event, form, timerDisplay, endTime)">
+      <input type="number" name="minutes" [(ngModel)]="minutes" placeholder="Enter Minutes">
     </form>
   </div>
   <div class="display">

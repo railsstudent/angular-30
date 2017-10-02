@@ -13,6 +13,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   countdown: any;
 
   timerOptions = [];
+  minutes: number;
 
   constructor(private renderer: Renderer) { }
 
@@ -79,5 +80,12 @@ export class TimerComponent implements OnInit, OnDestroy {
     const minutes = end.getMinutes();
     const adjustedHours = hours > 12 ? hours - 12 : hours;
     this.renderer.setElementProperty(elEndTime, 'textContent', `${adjustedHours}:${minutes < 10 ? 0 : ''}${minutes}`);
+  }
+
+  submit($event, form, elTimerDisplay, elEndTime) {
+    $event.preventDefault();
+    console.log(this.minutes);
+    this.timer(this.minutes * 60, elTimerDisplay, elEndTime);
+    form.reset();
   }
 }
