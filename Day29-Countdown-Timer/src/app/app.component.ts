@@ -13,7 +13,7 @@ export class AppComponent {
      this.titleService.setTitle(this.title);
   }
 
-  updateTitleTitle(strTime: string) {
+  updateTitleDisplay(strTime: string) {
     this.titleService.setTitle(strTime);
   }
 }

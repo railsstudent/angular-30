@@ -43,7 +43,7 @@ export class TimerComponent implements OnInit, OnDestroy {
     clearInterval(this.countdown);
   }
 
-  timer(seconds: number, elTimeLeft: any, elEndTime: any) {
+  timer(seconds: number, elTimerDisplay: any, elEndTime: any) {
     console.log(seconds);
     clearInterval(this.countdown);
 
@@ -52,12 +52,16 @@ export class TimerComponent implements OnInit, OnDestroy {
 
     console.log(now, then);
 
-    this.displayTimeLeft(elTimeLeft, seconds);
+    this.displayTimeLeft(elTimerDisplay, seconds);
     this.displayEndTime(elEndTime, then);
   }
 
-  displayTimeLeft(elTimeLeft, seconds) {
-
+  displayTimeLeft(elTimerDisplay, seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainderSeconds = seconds % 60;
+    const display = `${minutes}:${remainderSeconds < 10 ? 0 : ''}${remainderSeconds}`;
+    this.renderer.setElementProperty(elTimerDisplay, 'textContent', display);
+    this.onUpdateTimeLeft.emit(display);
   }
 
   displayEndTime(elEndTime, timestamp) {
@@ -65,7 +69,6 @@ export class TimerComponent implements OnInit, OnDestroy {
     const hours = end.getHours();
     const minutes = end.getMinutes();
     const adjustedHours = hours > 12 ? hours - 12 : hours;
-    const adjustedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-    this.renderer.setElementProperty(elEndTime, 'textContent', `${adjustedHours}:${adjustedMinutes}`);
+    this.renderer.setElementProperty(elEndTime, 'textContent', `${adjustedHours}:${minutes < 10 ? 0 : ''}${minutes}`);
   }
 }
