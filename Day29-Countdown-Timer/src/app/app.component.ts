@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Countdown Timer';
+
+  constructor(private titleService: Title) {
+     this.titleService.setTitle(this.title);
+  }
+
+  updateTitleTitle(strTime: string) {
+    this.titleService.setTitle(strTime);
+  }
 }
