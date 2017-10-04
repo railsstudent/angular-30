@@ -21,4 +21,10 @@ export class VideoPlayerComponent implements OnInit {
     video[name] = value;
   }
 
+  skip({target}, video) {
+    const {dataset} = target;
+    console.log(dataset.skip);
+    video.currentTime += parseFloat(dataset.skip);
+  }
+
 }
