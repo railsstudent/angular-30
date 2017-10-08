@@ -5,7 +5,8 @@
 
   <div class="player__controls">
     <div class="progress" #progress (click)="scrub($event, video, progress)"
-          (mousedown)="mousedown = true;" (mouseup)="mousedown = false;">
+          (mousedown)="mousedown = true;" (mouseup)="mousedown = false;"
+          (mousemove)="mousedown && scrub($event, video, progress)">
      <div class="progress__filled" #progressBar></div>
     </div>
     <button class="player__button toggle" title="Toggle Play" #toggle (click)="togglePlay(video)">►</button>
