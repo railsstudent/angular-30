@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer } from '@angular/core';
 
 @Component({
   selector: 'app-video-player',
@@ -9,7 +9,7 @@ export class VideoPlayerComponent implements OnInit {
 
   mousedown: boolean;
 
-  constructor() { }
+  constructor(private renderer: Renderer) { }
 
   ngOnInit() {
     this.mousedown = false;
@@ -25,6 +25,19 @@ export class VideoPlayerComponent implements OnInit {
     const {dataset} = target;
     console.log(dataset.skip);
     video.currentTime += parseFloat(dataset.skip);
+  }
+
+  togglePlay(video) {
+    if (video.paused) {
+      video.play();
+    } else {
+      video.pause();
+    }
+  }
+
+  updateButton(video, toggle) {
+    const icon = video.paused ? '►' : '❚ ❚';
+    this.renderer.setElementProperty(toggle, 'textContent', icon);
   }
 
 }

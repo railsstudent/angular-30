@@ -1,12 +1,12 @@
 <div class="player">
   <video class="player__video viewer" src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"
-  #video></video>
+  #video (play)="updateButton(video, toggle)" (pause)="updateButton(video, toggle)"></video>
 
   <div class="player__controls">
     <div class="progress" #progress>
      <div class="progress__filled" #progressBar></div>
     </div>
-    <button class="player__button toggle" title="Toggle Play" #toggle>►</button>
+    <button class="player__button toggle" title="Toggle Play" #toggle (click)="togglePlay(video)">►</button>
     <input type="range" name="volume" class="player__slider" min="0" max="1" step="0.05" value="1"
       (click)="handleRangeUpdate($event, video)"
       (mousemove)="handleRangeUpdate($event, video)">
