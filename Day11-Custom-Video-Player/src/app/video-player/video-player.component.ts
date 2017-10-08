@@ -40,4 +40,17 @@ export class VideoPlayerComponent implements OnInit {
     this.renderer.setElementProperty(toggle, 'textContent', icon);
   }
 
+  handleProgress(video, progressBar) {
+    // update flex-basis of progress bar
+    const percent = (video.currentTime / video.duration) * 100;
+    console.log(`flex-basis: ${percent}`);
+    progressBar.style.flexBasis = `${percent}%`;
+  }
+
+  scrub(e, video, progress) {
+    const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+    video.currentTime = scrubTime;
+    console.log(`currentTime: ${video.currentTime}`);
+  }
+
 }
