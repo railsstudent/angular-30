@@ -1,9 +1,11 @@
 <div class="player">
   <video class="player__video viewer" src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"
-  #video (play)="updateButton(video, toggle)" (pause)="updateButton(video, toggle)"></video>
+  #video (play)="updateButton(video, toggle)" (pause)="updateButton(video, toggle)"
+    (click)="togglePlay(video)" (timeupdate)="handleProgress(video, progressBar)"></video>
 
   <div class="player__controls">
-    <div class="progress" #progress>
+    <div class="progress" #progress (click)="scrub($event, video, progress)"
+          (mousedown)="mousedown = true;" (mouseup)="mousedown = false;">
      <div class="progress__filled" #progressBar></div>
     </div>
     <button class="player__button toggle" title="Toggle Play" #toggle (click)="togglePlay(video)">►</button>
