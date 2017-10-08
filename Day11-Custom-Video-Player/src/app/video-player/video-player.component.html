@@ -1,0 +1,22 @@
+<div class="player">
+  <video class="player__video viewer" src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"
+  #video (play)="updateButton(video, toggle)" (pause)="updateButton(video, toggle)"
+    (click)="togglePlay(video)" (timeupdate)="handleProgress(video, progressBar)"></video>
+
+  <div class="player__controls">
+    <div class="progress" #progress (click)="scrub($event, video, progress)"
+          (mousedown)="mousedown = true;" (mouseup)="mousedown = false;"
+          (mousemove)="mousedown && scrub($event, video, progress)">
+     <div class="progress__filled" #progressBar></div>
+    </div>
+    <button class="player__button toggle" title="Toggle Play" #toggle (click)="togglePlay(video)">►</button>
+    <input type="range" name="volume" class="player__slider" min="0" max="1" step="0.05" value="1"
+      (click)="handleRangeUpdate($event, video)"
+      (mousemove)="handleRangeUpdate($event, video)">
+    <input type="range" name="playbackRate" class="player__slider" min="0.5" max="2" step="0.1" value="1"
+      (click)="handleRangeUpdate($event, video)"
+      (mousemove)="handleRangeUpdate($event, video)">
+    <button data-skip="-10" class="player__button" (click)="skip($event, video)">« 10s</button>
+    <button data-skip="25" class="player__button" (click)="skip($event, video)">25s »</button>
+  </div>
+</div>
