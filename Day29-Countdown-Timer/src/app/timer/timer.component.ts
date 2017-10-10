@@ -11,9 +11,10 @@ export class TimerComponent implements OnInit, OnDestroy {
   onUpdateTimeLeft = new EventEmitter<string>();
 
   countdown: any;
-
   timerOptions = [];
   minutes: number;
+  endTime: string = '';
+  timerDisplay: string = '';
 
   constructor(private renderer: Renderer) { }
 
@@ -44,7 +45,7 @@ export class TimerComponent implements OnInit, OnDestroy {
     clearInterval(this.countdown);
   }
 
-  timer(seconds: number, elTimerDisplay: any, elEndTime: any) {
+  timer(seconds: number) {
     console.log(seconds);
     clearInterval(this.countdown);
 
@@ -53,8 +54,8 @@ export class TimerComponent implements OnInit, OnDestroy {
 
     console.log(now, then);
 
-    this.displayTimeLeft(elTimerDisplay, seconds);
-    this.displayEndTime(elEndTime, then);
+    this.displayTimeLeft(seconds);
+    this.displayEndTime(then);
 
     this.countdown = setInterval(() => {
       const secondsLeft = Math.round( (then - Date.now()) / 1000 );
@@ -62,30 +63,29 @@ export class TimerComponent implements OnInit, OnDestroy {
         clearInterval(this.countdown);
         return;
       }
-      this.displayTimeLeft(elTimerDisplay, secondsLeft);
+      this.displayTimeLeft(secondsLeft);
     }, 1000);
   }
 
-  displayTimeLeft(elTimerDisplay, seconds) {
+  displayTimeLeft(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainderSeconds = seconds % 60;
-    const display = `${minutes}:${remainderSeconds < 10 ? 0 : ''}${remainderSeconds}`;
-    this.renderer.setElementProperty(elTimerDisplay, 'textContent', display);
-    this.onUpdateTimeLeft.emit(display);
+    this.timerDisplay = `${minutes}:${remainderSeconds < 10 ? 0 : ''}${remainderSeconds}`;
+    this.onUpdateTimeLeft.emit(this.timerDisplay);
   }
 
-  displayEndTime(elEndTime, timestamp) {
+  displayEndTime(timestamp) {
     const end = new Date(timestamp);
     const hours = end.getHours();
     const minutes = end.getMinutes();
     const adjustedHours = hours > 12 ? hours - 12 : hours;
-    this.renderer.setElementProperty(elEndTime, 'textContent', `${adjustedHours}:${minutes < 10 ? 0 : ''}${minutes}`);
+    this.endTime = `${adjustedHours}:${minutes < 10 ? 0 : ''}${minutes}`;
   }
 
   submit($event, form, elTimerDisplay, elEndTime) {
     $event.preventDefault();
     console.log(this.minutes);
-    this.timer(this.minutes * 60, elTimerDisplay, elEndTime);
+    this.timer(this.minutes * 60);
     form.reset();
   }
 }
