@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, OnDestroy, EventEmitter, Renderer } from '@angular/core';
+import { Component, OnInit, Output, OnDestroy, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-timer',
@@ -16,7 +16,7 @@ export class TimerComponent implements OnInit, OnDestroy {
   endTime: string = '';
   timerDisplay: string = '';
 
-  constructor(private renderer: Renderer) { }
+  constructor() { }
 
   ngOnInit() {
     this.timerOptions = [{
@@ -46,13 +46,9 @@ export class TimerComponent implements OnInit, OnDestroy {
   }
 
   timer(seconds: number) {
-    console.log(seconds);
     clearInterval(this.countdown);
-
     const now = Date.now();
     const then = now + seconds * 1000;
-
-    console.log(now, then);
 
     this.displayTimeLeft(seconds);
     this.displayEndTime(then);
@@ -82,7 +78,7 @@ export class TimerComponent implements OnInit, OnDestroy {
     this.endTime = `${adjustedHours}:${minutes < 10 ? 0 : ''}${minutes}`;
   }
 
-  submit($event, form, elTimerDisplay, elEndTime) {
+  submit($event, form) {
     $event.preventDefault();
     console.log(this.minutes);
     this.timer(this.minutes * 60);
