@@ -1,0 +1,10 @@
+<h1>Whack-a-mole! <span class="score">{{score}}</span></h1>
+<button (click)="startGame()">Start!</button>
+<div class="high-score-wrapper">
+  <div class="high-score">Highest Score: {{currentHighScore}}</div>
+</div>
+<div class="game">
+  <div *ngFor="let id of holeIds" class="hole hole{{id}}" #hole>
+    <div class="mole" (click)="bonk($event)"></div>
+  </div>
+</div>
