@@ -1,5 +1,6 @@
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { VideoCamComponent } from './video-cam/video-cam.component';
@@ -10,7 +11,8 @@ import { VideoCamComponent } from './video-cam/video-cam.component';
     VideoCamComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [
     Title
