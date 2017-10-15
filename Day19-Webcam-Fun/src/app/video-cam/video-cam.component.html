@@ -1,0 +1,22 @@
+<div class="photobooth">
+  <div class="controls">
+    <button (click)="takePhoto(snap, strip)">Take Photo</button>
+     <div class="rgb">
+      <app-color-range [color]="Red" [(min)]="redMin" [(max)]="redMax"></app-color-range>
+      <br/>
+      <app-color-range [color]="Green" [(min)]="greenMin" [(max)]="greenMax"></app-color-range>
+      <br/>
+      <app-color-range [color]="Blue" [(min)]="blueMin" [(max)]="blueMax"></app-color-range>
+      <br/>
+  </div>
+
+  <canvas class="photo" #canvas></canvas>
+  <video class="player" #video></video>
+  <div class="strip" #strip>
+    <a *ngFor="let photo of photos" href="{{photo?.data}}" download="cute">
+      <img src="{{photo?.data}}" alt="{{photo?.alt}}" />
+    </a>
+  </div>
+</div>
+
+<audio class="snap" src="http://wesbos.com/demos/photobooth/snap.mp3" hidden #snap></audio>
