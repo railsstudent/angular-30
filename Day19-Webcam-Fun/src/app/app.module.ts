@@ -4,11 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { VideoCamComponent } from './video-cam/video-cam.component';
+import { ColorRangeComponent } from './color-range/color-range.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VideoCamComponent
+    VideoCamComponent,
+    ColorRangeComponent
   ],
   imports: [
     BrowserModule,

@@ -50,6 +50,8 @@ export class VideoCamComponent implements OnInit, AfterViewInit, OnDestroy {
     snap.currentTime = 0;
     snap.play();
 
+    console.log(this.redMin, this.redMax, this.greenMin, this.greenMax, this.blueMin, this.blueMax);
+
     // take the data out of the canvas
     const data = this.canvas.nativeElement.toDataURL('image/jpeg');
     const photo: PhotoLink = {

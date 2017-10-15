@@ -2,25 +2,12 @@
   <div class="controls">
     <button (click)="takePhoto(snap, strip)">Take Photo</button>
      <div class="rgb">
-      <label for="rmin">Red Min:</label>
-      <input type="range" min=0 max=255 name="rmin" [(ngModel)]="redMin">
-      <label for="rmax">Red Max:</label>
-      <input type="range" min=0 max=255 name="rmax" [(ngModel)]="redMax">
-
-      <br>
-
-      <label for="gmin">Green Min:</label>
-      <input type="range" min=0 max=255 name="gmin" [(ngModel)]="greenMin">
-      <label for="gmax">Green Max:</label>
-      <input type="range" min=0 max=255 name="gmax" [(ngModel)]="greenMax">
-
-      <br>
-
-      <label for="bmin">Blue Min:</label>
-      <input type="range" min=0 max=255 name="bmin" [(ngModel)]="blueMin">
-      <label for="bmax">Blue Max:</label>
-      <input type="range" min=0 max=255 name="bmax" [(ngModel)]="blueMax">
-    </div>
+      <app-color-range [color]="Red" [(min)]="redMin" [(max)]="redMax"></app-color-range>
+      <br/>
+      <app-color-range [color]="Green" [(min)]="greenMin" [(max)]="greenMax"></app-color-range>
+      <br/>
+      <app-color-range [color]="Blue" [(min)]="blueMin" [(max)]="blueMax"></app-color-range>
+      <br/>
   </div>
 
   <canvas class="photo" #canvas></canvas>
