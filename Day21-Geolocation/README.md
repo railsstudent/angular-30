@@ -26,3 +26,6 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Run at https://192.168.1.132:4200 in ios simulator
+ng serve --ssl 1 --ssl-key key.pem --ssl-cert cert.pem --host 192.168.1.132
